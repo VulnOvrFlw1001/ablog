@@ -1,0 +1,26 @@
+
+{% extends 'base.html' %}
+{% block title %}Make Changes{% endblock %}
+
+{% block content %}
+
+
+{% if user.is_authenticated %}
+<br/>
+<h1>Change what you said here....</h1>
+<br/>
+<div class="form-group">
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-success">Update here!</button>
+    </div>
+
+{% else %} 
+
+This page is restricted
+
+{% endif %}
+
+
+{% endblock %}

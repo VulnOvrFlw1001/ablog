@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ post.title_tag }}{% endblock %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+
+<h1>{{ post.title }}</h1>
+<small>By: {{ post.author.first_name }} {{ post.author.last_name }} - {{ post.post_date }}
+    <a href="{% url 'update_post' post.pk %}">Edited</a>
+
+    <a href="{% url 'delete_post' post.pk %}">Delete</a> <br/>
+</br>
+{{ post.body|safe }}
+
+<br></br>
+<a href="{% url 'home' %}" class="btn btn-dark">Back</a>
+
+
+{% else %} 
+
+This page is restricted
+    
+{% endif %}
+
+
+{% endblock %}

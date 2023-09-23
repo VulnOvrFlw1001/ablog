@@ -1,0 +1,26 @@
+
+{% extends 'base.html' %}
+{% block title %}Create a new chat post{% endblock %}
+
+{% block content %}
+
+
+{% if user.is_authenticated %}
+
+<br/>
+<h1>Say something here....</h1>
+<br/>
+<div class="form-group">
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-success">Post!</button>
+    </div>
+    
+{% else %} 
+
+This page is restricted
+    
+{% endif %}
+
+{% endblock %}
